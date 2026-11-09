@@ -1,0 +1,29 @@
+services:
+  legacy:
+    build:
+      context: ./legacy
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      APP_KEY: ${APP_KEY}
+      APP_ENV: production
+      APP_DEBUG: "false"
+    networks:
+      - shadow-lab
+
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    ports:
+      - "18080:18080"
+    environment:
+      REMOTE_ADDRESS: "http://legacy:8080"
+      PROXY_ADDRESS: ":18080"
+    networks:
+      - shadow-lab
+
+networks:
+  shadow-lab:
+    driver: bridge

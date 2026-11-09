@@ -1,0 +1,7 @@
+/vendor
+.env
+/storage/logs/*
+!/storage/logs/.gitignore
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+.DS_Store

@@ -1,0 +1,11 @@
+{
+	# Unprivileged, single-port, no TLS (the ALB terminates TLS), no admin API.
+	admin off
+	auto_https off
+	frankenphp
+}
+
+:8080 {
+	root * /app/public
+	php_server
+}
